@@ -11,16 +11,71 @@ use App\Models\ContactContact;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Yajra\DataTables\Facades\DataTables;
 
 class ContactContactsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         abort_if(Gate::denies('contact_contact_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $contactContacts = ContactContact::with(['company'])->get();
+        if ($request->ajax()) {
+            $query = ContactContact::with(['company', 'created_by'])->select(sprintf('%s.*', (new ContactContact)->table));
+            $table = Datatables::of($query);
 
-        return view('admin.contactContacts.index', compact('contactContacts'));
+            $table->addColumn('placeholder', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
+
+            $table->editColumn('actions', function ($row) {
+                $viewGate      = 'contact_contact_show';
+                $editGate      = 'contact_contact_edit';
+                $deleteGate    = 'contact_contact_delete';
+                $crudRoutePart = 'contact-contacts';
+
+                return view('partials.datatablesActions', compact(
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
+            });
+
+            $table->editColumn('id', function ($row) {
+                return $row->id ? $row->id : "";
+            });
+            $table->addColumn('company_company_name', function ($row) {
+                return $row->company ? $row->company->company_name : '';
+            });
+
+            $table->editColumn('contact_first_name', function ($row) {
+                return $row->contact_first_name ? $row->contact_first_name : "";
+            });
+            $table->editColumn('contact_last_name', function ($row) {
+                return $row->contact_last_name ? $row->contact_last_name : "";
+            });
+            $table->editColumn('contact_phone_1', function ($row) {
+                return $row->contact_phone_1 ? $row->contact_phone_1 : "";
+            });
+            $table->editColumn('contact_phone_2', function ($row) {
+                return $row->contact_phone_2 ? $row->contact_phone_2 : "";
+            });
+            $table->editColumn('contact_email', function ($row) {
+                return $row->contact_email ? $row->contact_email : "";
+            });
+            $table->editColumn('contact_skype', function ($row) {
+                return $row->contact_skype ? $row->contact_skype : "";
+            });
+            $table->editColumn('contact_address', function ($row) {
+                return $row->contact_address ? $row->contact_address : "";
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'company']);
+
+            return $table->make(true);
+        }
+
+        return view('admin.contactContacts.index');
     }
 
     public function create()
@@ -45,7 +100,7 @@ class ContactContactsController extends Controller
 
         $companies = ContactCompany::all()->pluck('company_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $contactContact->load('company');
+        $contactContact->load('company', 'created_by');
 
         return view('admin.contactContacts.edit', compact('companies', 'contactContact'));
     }
@@ -61,7 +116,7 @@ class ContactContactsController extends Controller
     {
         abort_if(Gate::denies('contact_contact_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $contactContact->load('company');
+        $contactContact->load('company', 'created_by');
 
         return view('admin.contactContacts.show', compact('contactContact'));
     }

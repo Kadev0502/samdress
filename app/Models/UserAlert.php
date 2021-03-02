@@ -2,14 +2,13 @@
 
 namespace App\Models;
 
-use App\Traits\MultiTenantModelTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use \DateTimeInterface;
 
 class UserAlert extends Model
 {
-    use MultiTenantModelTrait, HasFactory;
+    use HasFactory;
 
     public $table = 'user_alerts';
 
@@ -23,7 +22,6 @@ class UserAlert extends Model
         'alert_link',
         'created_at',
         'updated_at',
-        'created_by_id',
     ];
 
     protected function serializeDate(DateTimeInterface $date)
@@ -34,10 +32,5 @@ class UserAlert extends Model
     public function users()
     {
         return $this->belongsToMany(User::class);
-    }
-
-    public function created_by()
-    {
-        return $this->belongsTo(User::class, 'created_by_id');
     }
 }

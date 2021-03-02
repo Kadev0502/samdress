@@ -12,7 +12,7 @@ class AddRelationshipFieldsToExpensesTable extends Migration
             $table->unsignedBigInteger('expense_category_id')->nullable();
             $table->foreign('expense_category_id', 'expense_category_fk_3323714')->references('id')->on('expense_categories');
             $table->unsignedBigInteger('created_by_id')->nullable();
-            $table->foreign('created_by_id', 'created_by_fk_3324669')->references('id')->on('users');
+            $table->foreign('created_by_id', 'created_by_fk_3324840')->references('id')->on('users');
         });
     }
 }

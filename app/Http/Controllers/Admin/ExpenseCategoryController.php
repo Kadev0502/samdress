@@ -19,7 +19,7 @@ class ExpenseCategoryController extends Controller
         abort_if(Gate::denies('expense_category_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = ExpenseCategory::query()->select(sprintf('%s.*', (new ExpenseCategory)->table));
+            $query = ExpenseCategory::with(['created_by'])->select(sprintf('%s.*', (new ExpenseCategory)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -73,6 +73,8 @@ class ExpenseCategoryController extends Controller
     {
         abort_if(Gate::denies('expense_category_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $expenseCategory->load('created_by');
+
         return view('admin.expenseCategories.edit', compact('expenseCategory'));
     }
 
@@ -86,6 +88,8 @@ class ExpenseCategoryController extends Controller
     public function show(ExpenseCategory $expenseCategory)
     {
         abort_if(Gate::denies('expense_category_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $expenseCategory->load('created_by');
 
         return view('admin.expenseCategories.show', compact('expenseCategory'));
     }

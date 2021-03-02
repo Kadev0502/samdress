@@ -2,6 +2,11 @@
     <section class="sidebar" style="height: auto;">
         <ul class="sidebar-menu tree" data-widget="tree">
             <li>
+                <select class="searchable-field form-control">
+
+                </select>
+            </li>
+            <li>
                 <a href="{{ route("admin.home") }}">
                     <i class="fas fa-fw fa-tachometer-alt">
 

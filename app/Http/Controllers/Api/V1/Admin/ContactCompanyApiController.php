@@ -17,7 +17,7 @@ class ContactCompanyApiController extends Controller
     {
         abort_if(Gate::denies('contact_company_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new ContactCompanyResource(ContactCompany::all());
+        return new ContactCompanyResource(ContactCompany::with(['created_by'])->get());
     }
 
     public function store(StoreContactCompanyRequest $request)
@@ -33,7 +33,7 @@ class ContactCompanyApiController extends Controller
     {
         abort_if(Gate::denies('contact_company_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new ContactCompanyResource($contactCompany);
+        return new ContactCompanyResource($contactCompany->load(['created_by']));
     }
 
     public function update(UpdateContactCompanyRequest $request, ContactCompany $contactCompany)

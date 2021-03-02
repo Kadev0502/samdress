@@ -11,16 +11,56 @@ use App\Models\ExpenseCategory;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Yajra\DataTables\Facades\DataTables;
 
 class ExpenseController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         abort_if(Gate::denies('expense_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $expenses = Expense::with(['expense_category'])->get();
+        if ($request->ajax()) {
+            $query = Expense::with(['expense_category', 'created_by'])->select(sprintf('%s.*', (new Expense)->table));
+            $table = Datatables::of($query);
 
-        return view('admin.expenses.index', compact('expenses'));
+            $table->addColumn('placeholder', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
+
+            $table->editColumn('actions', function ($row) {
+                $viewGate      = 'expense_show';
+                $editGate      = 'expense_edit';
+                $deleteGate    = 'expense_delete';
+                $crudRoutePart = 'expenses';
+
+                return view('partials.datatablesActions', compact(
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
+            });
+
+            $table->editColumn('id', function ($row) {
+                return $row->id ? $row->id : "";
+            });
+            $table->addColumn('expense_category_name', function ($row) {
+                return $row->expense_category ? $row->expense_category->name : '';
+            });
+
+            $table->editColumn('amount', function ($row) {
+                return $row->amount ? $row->amount : "";
+            });
+            $table->editColumn('description', function ($row) {
+                return $row->description ? $row->description : "";
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'expense_category']);
+
+            return $table->make(true);
+        }
+
+        return view('admin.expenses.index');
     }
 
     public function create()
@@ -45,7 +85,7 @@ class ExpenseController extends Controller
 
         $expense_categories = ExpenseCategory::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $expense->load('expense_category');
+        $expense->load('expense_category', 'created_by');
 
         return view('admin.expenses.edit', compact('expense_categories', 'expense'));
     }
@@ -61,7 +101,7 @@ class ExpenseController extends Controller
     {
         abort_if(Gate::denies('expense_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $expense->load('expense_category');
+        $expense->load('expense_category', 'created_by');
 
         return view('admin.expenses.show', compact('expense'));
     }

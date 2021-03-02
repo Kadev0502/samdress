@@ -11,6 +11,8 @@ class AddRelationshipFieldsToContactContactsTable extends Migration
         Schema::table('contact_contacts', function (Blueprint $table) {
             $table->unsignedBigInteger('company_id')->nullable();
             $table->foreign('company_id', 'company_fk_3323692')->references('id')->on('contact_companies');
+            $table->unsignedBigInteger('created_by_id')->nullable();
+            $table->foreign('created_by_id', 'created_by_fk_3324632')->references('id')->on('users');
         });
     }
 }

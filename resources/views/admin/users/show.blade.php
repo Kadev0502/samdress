@@ -78,7 +78,23 @@
                 </div>
             </div>
 
-
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {{ trans('global.relatedData') }}
+                </div>
+                <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
+                    <li role="presentation">
+                        <a href="#user_user_alerts" aria-controls="user_user_alerts" role="tab" data-toggle="tab">
+                            {{ trans('cruds.userAlert.title') }}
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane" role="tabpanel" id="user_user_alerts">
+                        @includeIf('admin.users.relationships.userUserAlerts', ['userAlerts' => $user->userUserAlerts])
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>

@@ -51,6 +51,14 @@
                                 </tr>
                                 <tr>
                                     <th>
+                                        {{ trans('cruds.user.fields.approved') }}
+                                    </th>
+                                    <td>
+                                        <input type="checkbox" disabled="disabled" {{ $user->approved ? 'checked' : '' }}>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
                                         {{ trans('cruds.user.fields.roles') }}
                                     </th>
                                     <td>

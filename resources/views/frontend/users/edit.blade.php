@@ -34,6 +34,19 @@
                             <span class="help-block">{{ trans('cruds.user.fields.email_helper') }}</span>
                         </div>
                         <div class="form-group">
+                            <div>
+                                <input type="hidden" name="approved" value="0">
+                                <input type="checkbox" name="approved" id="approved" value="1" {{ $user->approved || old('approved', 0) === 1 ? 'checked' : '' }}>
+                                <label for="approved">{{ trans('cruds.user.fields.approved') }}</label>
+                            </div>
+                            @if($errors->has('approved'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('approved') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.user.fields.approved_helper') }}</span>
+                        </div>
+                        <div class="form-group">
                             <label class="required" for="password">{{ trans('cruds.user.fields.password') }}</label>
                             <input class="form-control" type="password" name="password" id="password">
                             @if($errors->has('password'))

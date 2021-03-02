@@ -83,6 +83,8 @@ return [
             'created_at_helper' => ' ',
             'updated_at'        => 'Updated at',
             'updated_at_helper' => ' ',
+            'created_by'        => 'Created By',
+            'created_by_helper' => ' ',
         ],
     ],
     'contactManagement' => [
@@ -163,8 +165,6 @@ return [
             'updated_at_helper' => ' ',
             'deleted_at'        => 'Deleted At',
             'deleted_at_helper' => ' ',
-            'created_by'        => 'Created By',
-            'created_by_helper' => ' ',
         ],
     ],
     'incomeCategory'    => [

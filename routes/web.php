@@ -16,6 +16,49 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Users
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
     Route::resource('users', 'UsersController');
+
+    // User Alerts
+    Route::delete('user-alerts/destroy', 'UserAlertsController@massDestroy')->name('user-alerts.massDestroy');
+    Route::resource('user-alerts', 'UserAlertsController', ['except' => ['edit', 'update']]);
+
+    // Contact Companies
+    Route::delete('contact-companies/destroy', 'ContactCompanyController@massDestroy')->name('contact-companies.massDestroy');
+    Route::resource('contact-companies', 'ContactCompanyController');
+
+    // Contact Contacts
+    Route::delete('contact-contacts/destroy', 'ContactContactsController@massDestroy')->name('contact-contacts.massDestroy');
+    Route::resource('contact-contacts', 'ContactContactsController');
+
+    // Expense Categories
+    Route::delete('expense-categories/destroy', 'ExpenseCategoryController@massDestroy')->name('expense-categories.massDestroy');
+    Route::resource('expense-categories', 'ExpenseCategoryController');
+
+    // Income Categories
+    Route::delete('income-categories/destroy', 'IncomeCategoryController@massDestroy')->name('income-categories.massDestroy');
+    Route::resource('income-categories', 'IncomeCategoryController');
+
+    // Expenses
+    Route::delete('expenses/destroy', 'ExpenseController@massDestroy')->name('expenses.massDestroy');
+    Route::resource('expenses', 'ExpenseController');
+
+    // Incomes
+    Route::delete('incomes/destroy', 'IncomeController@massDestroy')->name('incomes.massDestroy');
+    Route::resource('incomes', 'IncomeController');
+
+    // Expense Reports
+    Route::delete('expense-reports/destroy', 'ExpenseReportController@massDestroy')->name('expense-reports.massDestroy');
+    Route::resource('expense-reports', 'ExpenseReportController');
+
+    Route::get('messenger', 'MessengerController@index')->name('messenger.index');
+    Route::get('messenger/create', 'MessengerController@createTopic')->name('messenger.createTopic');
+    Route::post('messenger', 'MessengerController@storeTopic')->name('messenger.storeTopic');
+    Route::get('messenger/inbox', 'MessengerController@showInbox')->name('messenger.showInbox');
+    Route::get('messenger/outbox', 'MessengerController@showOutbox')->name('messenger.showOutbox');
+    Route::get('messenger/{topic}', 'MessengerController@showMessages')->name('messenger.showMessages');
+    Route::delete('messenger/{topic}', 'MessengerController@destroyTopic')->name('messenger.destroyTopic');
+    Route::post('messenger/{topic}/reply', 'MessengerController@replyToTopic')->name('messenger.reply');
+    Route::get('messenger/{topic}/reply', 'MessengerController@showReply')->name('messenger.showReply');
+    Route::get('user-alerts/read', 'UserAlertsController@read');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
 // Change password
@@ -40,6 +83,34 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['
     // Users
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
     Route::resource('users', 'UsersController');
+
+    // User Alerts
+    Route::delete('user-alerts/destroy', 'UserAlertsController@massDestroy')->name('user-alerts.massDestroy');
+    Route::resource('user-alerts', 'UserAlertsController', ['except' => ['edit', 'update']]);
+
+    // Contact Companies
+    Route::delete('contact-companies/destroy', 'ContactCompanyController@massDestroy')->name('contact-companies.massDestroy');
+    Route::resource('contact-companies', 'ContactCompanyController');
+
+    // Contact Contacts
+    Route::delete('contact-contacts/destroy', 'ContactContactsController@massDestroy')->name('contact-contacts.massDestroy');
+    Route::resource('contact-contacts', 'ContactContactsController');
+
+    // Expense Categories
+    Route::delete('expense-categories/destroy', 'ExpenseCategoryController@massDestroy')->name('expense-categories.massDestroy');
+    Route::resource('expense-categories', 'ExpenseCategoryController');
+
+    // Income Categories
+    Route::delete('income-categories/destroy', 'IncomeCategoryController@massDestroy')->name('income-categories.massDestroy');
+    Route::resource('income-categories', 'IncomeCategoryController');
+
+    // Expenses
+    Route::delete('expenses/destroy', 'ExpenseController@massDestroy')->name('expenses.massDestroy');
+    Route::resource('expenses', 'ExpenseController');
+
+    // Incomes
+    Route::delete('incomes/destroy', 'IncomeController@massDestroy')->name('incomes.massDestroy');
+    Route::resource('incomes', 'IncomeController');
 
     Route::get('frontend/profile', 'ProfileController@index')->name('profile.index');
     Route::post('frontend/profile', 'ProfileController@update')->name('profile.update');

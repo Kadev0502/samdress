@@ -109,6 +109,8 @@ return [
             'updated_at_helper'      => ' ',
             'deleted_at'             => 'Deleted At',
             'deleted_at_helper'      => ' ',
+            'created_by'             => 'Created By',
+            'created_by_helper'      => ' ',
         ],
     ],
     'contactContact'    => [
@@ -139,6 +141,8 @@ return [
             'updated_at_helper'         => ' ',
             'deleted_at'                => 'Deleted At',
             'deleted_at_helper'         => ' ',
+            'created_by'                => 'Created By',
+            'created_by_helper'         => ' ',
         ],
     ],
     'expenseManagement' => [
@@ -159,6 +163,8 @@ return [
             'updated_at_helper' => ' ',
             'deleted_at'        => 'Deleted At',
             'deleted_at_helper' => ' ',
+            'created_by'        => 'Created By',
+            'created_by_helper' => ' ',
         ],
     ],
     'incomeCategory'    => [
@@ -175,6 +181,8 @@ return [
             'updated_at_helper' => ' ',
             'deleted_at'        => 'Deleted At',
             'deleted_at_helper' => ' ',
+            'created_by'        => 'Created By',
+            'created_by_helper' => ' ',
         ],
     ],
     'expense'           => [
@@ -197,6 +205,8 @@ return [
             'updated_at_helper'       => ' ',
             'deleted_at'              => 'Deleted At',
             'deleted_at_helper'       => ' ',
+            'created_by'              => 'Created By',
+            'created_by_helper'       => ' ',
         ],
     ],
     'income'            => [
@@ -219,6 +229,8 @@ return [
             'updated_at_helper'      => ' ',
             'deleted_at'             => 'Deleted At',
             'deleted_at_helper'      => ' ',
+            'created_by'             => 'Created By',
+            'created_by_helper'      => ' ',
         ],
     ],
     'expenseReport'     => [

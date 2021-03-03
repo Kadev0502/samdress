@@ -10,49 +10,16 @@ use App\Models\IncomeCategory;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Yajra\DataTables\Facades\DataTables;
 
 class IncomeCategoryController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         abort_if(Gate::denies('income_category_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        if ($request->ajax()) {
-            $query = IncomeCategory::with(['created_by'])->select(sprintf('%s.*', (new IncomeCategory)->table));
-            $table = Datatables::of($query);
+        $incomeCategories = IncomeCategory::with(['created_by'])->get();
 
-            $table->addColumn('placeholder', '&nbsp;');
-            $table->addColumn('actions', '&nbsp;');
-
-            $table->editColumn('actions', function ($row) {
-                $viewGate      = 'income_category_show';
-                $editGate      = 'income_category_edit';
-                $deleteGate    = 'income_category_delete';
-                $crudRoutePart = 'income-categories';
-
-                return view('partials.datatablesActions', compact(
-                    'viewGate',
-                    'editGate',
-                    'deleteGate',
-                    'crudRoutePart',
-                    'row'
-                ));
-            });
-
-            $table->editColumn('id', function ($row) {
-                return $row->id ? $row->id : "";
-            });
-            $table->editColumn('name', function ($row) {
-                return $row->name ? $row->name : "";
-            });
-
-            $table->rawColumns(['actions', 'placeholder']);
-
-            return $table->make(true);
-        }
-
-        return view('admin.incomeCategories.index');
+        return view('admin.incomeCategories.index', compact('incomeCategories'));
     }
 
     public function create()

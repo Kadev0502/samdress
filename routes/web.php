@@ -57,6 +57,40 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('expense-reports/destroy', 'ExpenseReportController@massDestroy')->name('expense-reports.massDestroy');
     Route::resource('expense-reports', 'ExpenseReportController');
 
+    // Suppliers
+    Route::delete('suppliers/destroy', 'SupplierController@massDestroy')->name('suppliers.massDestroy');
+    Route::resource('suppliers', 'SupplierController');
+
+    // Sizes
+    Route::delete('sizes/destroy', 'SizeController@massDestroy')->name('sizes.massDestroy');
+    Route::resource('sizes', 'SizeController');
+
+    // Categories
+    Route::delete('categories/destroy', 'CategoryController@massDestroy')->name('categories.massDestroy');
+    Route::resource('categories', 'CategoryController');
+
+    // Sub Categories
+    Route::delete('sub-categories/destroy', 'SubCategoryController@massDestroy')->name('sub-categories.massDestroy');
+    Route::resource('sub-categories', 'SubCategoryController');
+
+    // Colors
+    Route::delete('colors/destroy', 'ColorController@massDestroy')->name('colors.massDestroy');
+    Route::resource('colors', 'ColorController');
+
+    // Currencies
+    Route::delete('currencies/destroy', 'CurrencyController@massDestroy')->name('currencies.massDestroy');
+    Route::resource('currencies', 'CurrencyController');
+
+    // Articles
+    Route::delete('articles/destroy', 'ArticleController@massDestroy')->name('articles.massDestroy');
+    Route::post('articles/media', 'ArticleController@storeMedia')->name('articles.storeMedia');
+    Route::post('articles/ckmedia', 'ArticleController@storeCKEditorImages')->name('articles.storeCKEditorImages');
+    Route::resource('articles', 'ArticleController');
+
+    // Stocks
+    Route::delete('stocks/destroy', 'StockController@massDestroy')->name('stocks.massDestroy');
+    Route::resource('stocks', 'StockController');
+
     Route::get('messenger', 'MessengerController@index')->name('messenger.index');
     Route::get('messenger/create', 'MessengerController@createTopic')->name('messenger.createTopic');
     Route::post('messenger', 'MessengerController@storeTopic')->name('messenger.storeTopic');

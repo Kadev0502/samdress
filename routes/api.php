@@ -27,4 +27,29 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Incomes
     Route::apiResource('incomes', 'IncomeApiController');
+
+    // Suppliers
+    Route::apiResource('suppliers', 'SupplierApiController');
+
+    // Sizes
+    Route::apiResource('sizes', 'SizeApiController');
+
+    // Categories
+    Route::apiResource('categories', 'CategoryApiController');
+
+    // Sub Categories
+    Route::apiResource('sub-categories', 'SubCategoryApiController');
+
+    // Colors
+    Route::apiResource('colors', 'ColorApiController');
+
+    // Currencies
+    Route::apiResource('currencies', 'CurrencyApiController');
+
+    // Articles
+    Route::post('articles/media', 'ArticleApiController@storeMedia')->name('articles.storeMedia');
+    Route::apiResource('articles', 'ArticleApiController');
+
+    // Stocks
+    Route::apiResource('stocks', 'StockApiController');
 });

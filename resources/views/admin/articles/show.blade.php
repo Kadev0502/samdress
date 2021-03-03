@@ -63,14 +63,6 @@
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.article.fields.created_by') }}
-                                    </th>
-                                    <td>
-                                        {{ $article->created_by->name ?? '' }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
                                         {{ trans('cruds.article.fields.color') }}
                                     </th>
                                     <td>

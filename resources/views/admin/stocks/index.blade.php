@@ -52,9 +52,6 @@
                                         {{ trans('cruds.stock.fields.total_price') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.stock.fields.created_by') }}
-                                    </th>
-                                    <th>
                                         {{ trans('cruds.stock.fields.created_at') }}
                                     </th>
                                     <th>
@@ -97,9 +94,6 @@
                                         </td>
                                         <td>
                                             {{ $stock->total_price ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $stock->created_by->name ?? '' }}
                                         </td>
                                         <td>
                                             {{ $stock->created_at ?? '' }}

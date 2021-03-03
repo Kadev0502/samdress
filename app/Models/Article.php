@@ -51,6 +51,11 @@ class Article extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
+    public function articleStocks()
+    {
+        return $this->hasMany(Stock::class, 'article_id', 'id');
+    }
+
     public function getPhotoAttribute()
     {
         $files = $this->getMedia('photo');

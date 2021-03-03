@@ -104,7 +104,23 @@
                 </div>
             </div>
 
-
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {{ trans('global.relatedData') }}
+                </div>
+                <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
+                    <li role="presentation">
+                        <a href="#article_stocks" aria-controls="article_stocks" role="tab" data-toggle="tab">
+                            {{ trans('cruds.stock.title') }}
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane" role="tabpanel" id="article_stocks">
+                        @includeIf('admin.articles.relationships.articleStocks', ['stocks' => $article->articleStocks])
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>

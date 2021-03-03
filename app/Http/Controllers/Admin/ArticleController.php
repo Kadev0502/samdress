@@ -99,7 +99,7 @@ class ArticleController extends Controller
     {
         abort_if(Gate::denies('article_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $article->load('created_by', 'color', 'category', 'sub_category');
+        $article->load('created_by', 'color', 'category', 'sub_category', 'articleStocks');
 
         return view('admin.articles.show', compact('article'));
     }

@@ -240,174 +240,170 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 58,
-                'title' => 'pre_order_access',
-            ],
-            [
-                'id'    => 59,
                 'title' => 'supplier_create',
             ],
             [
-                'id'    => 60,
+                'id'    => 59,
                 'title' => 'supplier_edit',
             ],
             [
-                'id'    => 61,
+                'id'    => 60,
                 'title' => 'supplier_show',
             ],
             [
-                'id'    => 62,
+                'id'    => 61,
                 'title' => 'supplier_delete',
             ],
             [
-                'id'    => 63,
+                'id'    => 62,
                 'title' => 'supplier_access',
             ],
             [
-                'id'    => 64,
+                'id'    => 63,
                 'title' => 'product_access',
             ],
             [
-                'id'    => 65,
+                'id'    => 64,
                 'title' => 'size_create',
             ],
             [
-                'id'    => 66,
+                'id'    => 65,
                 'title' => 'size_edit',
             ],
             [
-                'id'    => 67,
+                'id'    => 66,
                 'title' => 'size_show',
             ],
             [
-                'id'    => 68,
+                'id'    => 67,
                 'title' => 'size_delete',
             ],
             [
-                'id'    => 69,
+                'id'    => 68,
                 'title' => 'size_access',
             ],
             [
-                'id'    => 70,
+                'id'    => 69,
                 'title' => 'category_create',
             ],
             [
-                'id'    => 71,
+                'id'    => 70,
                 'title' => 'category_edit',
             ],
             [
-                'id'    => 72,
+                'id'    => 71,
                 'title' => 'category_show',
             ],
             [
-                'id'    => 73,
+                'id'    => 72,
                 'title' => 'category_delete',
             ],
             [
-                'id'    => 74,
+                'id'    => 73,
                 'title' => 'category_access',
             ],
             [
-                'id'    => 75,
+                'id'    => 74,
                 'title' => 'sub_category_create',
             ],
             [
-                'id'    => 76,
+                'id'    => 75,
                 'title' => 'sub_category_edit',
             ],
             [
-                'id'    => 77,
+                'id'    => 76,
                 'title' => 'sub_category_show',
             ],
             [
-                'id'    => 78,
+                'id'    => 77,
                 'title' => 'sub_category_delete',
             ],
             [
-                'id'    => 79,
+                'id'    => 78,
                 'title' => 'sub_category_access',
             ],
             [
-                'id'    => 80,
+                'id'    => 79,
                 'title' => 'color_create',
             ],
             [
-                'id'    => 81,
+                'id'    => 80,
                 'title' => 'color_edit',
             ],
             [
-                'id'    => 82,
+                'id'    => 81,
                 'title' => 'color_show',
             ],
             [
-                'id'    => 83,
+                'id'    => 82,
                 'title' => 'color_delete',
             ],
             [
-                'id'    => 84,
+                'id'    => 83,
                 'title' => 'color_access',
             ],
             [
-                'id'    => 85,
+                'id'    => 84,
                 'title' => 'currency_create',
             ],
             [
-                'id'    => 86,
+                'id'    => 85,
                 'title' => 'currency_edit',
             ],
             [
-                'id'    => 87,
+                'id'    => 86,
                 'title' => 'currency_show',
             ],
             [
-                'id'    => 88,
+                'id'    => 87,
                 'title' => 'currency_delete',
             ],
             [
-                'id'    => 89,
+                'id'    => 88,
                 'title' => 'currency_access',
             ],
             [
-                'id'    => 90,
+                'id'    => 89,
                 'title' => 'article_create',
             ],
             [
-                'id'    => 91,
+                'id'    => 90,
                 'title' => 'article_edit',
             ],
             [
-                'id'    => 92,
+                'id'    => 91,
                 'title' => 'article_show',
             ],
             [
-                'id'    => 93,
+                'id'    => 92,
                 'title' => 'article_delete',
             ],
             [
-                'id'    => 94,
+                'id'    => 93,
                 'title' => 'article_access',
             ],
             [
-                'id'    => 95,
+                'id'    => 94,
                 'title' => 'stock_create',
             ],
             [
-                'id'    => 96,
+                'id'    => 95,
                 'title' => 'stock_edit',
             ],
             [
-                'id'    => 97,
+                'id'    => 96,
                 'title' => 'stock_show',
             ],
             [
-                'id'    => 98,
+                'id'    => 97,
                 'title' => 'stock_delete',
             ],
             [
-                'id'    => 99,
+                'id'    => 98,
                 'title' => 'stock_access',
             ],
             [
-                'id'    => 100,
+                'id'    => 99,
                 'title' => 'profile_password_edit',
             ],
         ];

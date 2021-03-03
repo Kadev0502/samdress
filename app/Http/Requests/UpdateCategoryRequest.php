@@ -19,7 +19,8 @@ class UpdateCategoryRequest extends FormRequest
         return [
             'name'             => [
                 'string',
-                'nullable',
+                'required',
+                'unique:categories,name,' . request()->route('category')->id,
             ],
             'sub_categories.*' => [
                 'integer',

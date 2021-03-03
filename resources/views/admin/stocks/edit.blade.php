@@ -13,8 +13,8 @@
                         @method('PUT')
                         @csrf
                         <div class="form-group {{ $errors->has('preorder_code') ? 'has-error' : '' }}">
-                            <label for="preorder_code">{{ trans('cruds.stock.fields.preorder_code') }}</label>
-                            <input class="form-control" type="text" name="preorder_code" id="preorder_code" value="{{ old('preorder_code', $stock->preorder_code) }}">
+                            <label class="required" for="preorder_code">{{ trans('cruds.stock.fields.preorder_code') }}</label>
+                            <input class="form-control" type="text" name="preorder_code" id="preorder_code" value="{{ old('preorder_code', $stock->preorder_code) }}" required>
                             @if($errors->has('preorder_code'))
                                 <span class="help-block" role="alert">{{ $errors->first('preorder_code') }}</span>
                             @endif

@@ -10,8 +10,8 @@ class CreateCurrenciesTable extends Migration
     {
         Schema::create('currencies', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable();
-            $table->string('code')->nullable();
+            $table->string('name');
+            $table->string('code')->unique();
             $table->timestamps();
             $table->softDeletes();
         });

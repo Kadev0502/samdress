@@ -19,7 +19,8 @@ class UpdateStockRequest extends FormRequest
         return [
             'preorder_code' => [
                 'string',
-                'nullable',
+                'required',
+                'unique:stocks,preorder_code,' . request()->route('stock')->id,
             ],
             'quantity'      => [
                 'nullable',

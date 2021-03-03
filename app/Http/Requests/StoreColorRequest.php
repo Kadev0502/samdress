@@ -19,7 +19,8 @@ class StoreColorRequest extends FormRequest
         return [
             'name' => [
                 'string',
-                'nullable',
+                'required',
+                'unique:colors',
             ],
         ];
     }

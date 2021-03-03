@@ -24,10 +24,10 @@ class Stock extends Model
         'preorder_code',
         'supplier_id',
         'size_id',
+        'article_id',
         'quantity',
         'total_price',
         'created_by_id',
-        'article_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -48,13 +48,13 @@ class Stock extends Model
         return $this->belongsTo(Size::class, 'size_id');
     }
 
-    public function created_by()
-    {
-        return $this->belongsTo(User::class, 'created_by_id');
-    }
-
     public function article()
     {
         return $this->belongsTo(Article::class, 'article_id');
+    }
+
+    public function created_by()
+    {
+        return $this->belongsTo(User::class, 'created_by_id');
     }
 }

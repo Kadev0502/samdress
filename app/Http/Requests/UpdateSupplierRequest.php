@@ -19,7 +19,7 @@ class UpdateSupplierRequest extends FormRequest
         return [
             'name' => [
                 'string',
-                'nullable',
+                'required',
             ],
         ];
     }

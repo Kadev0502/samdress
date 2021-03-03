@@ -19,11 +19,12 @@ class StoreCurrencyRequest extends FormRequest
         return [
             'name'        => [
                 'string',
-                'nullable',
+                'required',
             ],
             'code'        => [
                 'string',
-                'nullable',
+                'required',
+                'unique:currencies',
             ],
             'suppliers.*' => [
                 'integer',

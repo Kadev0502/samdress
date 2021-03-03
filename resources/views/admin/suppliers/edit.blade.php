@@ -13,8 +13,8 @@
                         @method('PUT')
                         @csrf
                         <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                            <label for="name">{{ trans('cruds.supplier.fields.name') }}</label>
-                            <input class="form-control" type="text" name="name" id="name" value="{{ old('name', $supplier->name) }}">
+                            <label class="required" for="name">{{ trans('cruds.supplier.fields.name') }}</label>
+                            <input class="form-control" type="text" name="name" id="name" value="{{ old('name', $supplier->name) }}" required>
                             @if($errors->has('name'))
                                 <span class="help-block" role="alert">{{ $errors->first('name') }}</span>
                             @endif

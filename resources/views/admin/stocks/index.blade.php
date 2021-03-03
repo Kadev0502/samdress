@@ -37,9 +37,6 @@
                                         {{ trans('cruds.stock.fields.size') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.stock.fields.created_by') }}
-                                    </th>
-                                    <th>
                                         {{ trans('cruds.stock.fields.article') }}
                                     </th>
                                     <th>
@@ -53,6 +50,9 @@
                                     </th>
                                     <th>
                                         {{ trans('cruds.stock.fields.total_price') }}
+                                    </th>
+                                    <th>
+                                        {{ trans('cruds.stock.fields.created_by') }}
                                     </th>
                                     <th>
                                         {{ trans('cruds.stock.fields.created_at') }}
@@ -84,9 +84,6 @@
                                             {{ $stock->size->name ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $stock->created_by->name ?? '' }}
-                                        </td>
-                                        <td>
                                             {{ $stock->article->name ?? '' }}
                                         </td>
                                         <td>
@@ -100,6 +97,9 @@
                                         </td>
                                         <td>
                                             {{ $stock->total_price ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $stock->created_by->name ?? '' }}
                                         </td>
                                         <td>
                                             {{ $stock->created_at ?? '' }}

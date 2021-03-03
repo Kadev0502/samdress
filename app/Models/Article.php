@@ -53,15 +53,14 @@ class Article extends Model implements HasMedia
 
     public function getPhotoAttribute()
     {
-        $file = $this->getMedia('photo')->last();
+        $files = $this->getMedia('photo');
+        $files->each(function ($item) {
+            $item->url       = $item->getUrl();
+            $item->thumbnail = $item->getUrl('thumb');
+            $item->preview   = $item->getUrl('preview');
+        });
 
-        if ($file) {
-            $file->url       = $file->getUrl();
-            $file->thumbnail = $file->getUrl('thumb');
-            $file->preview   = $file->getUrl('preview');
-        }
-
-        return $file;
+        return $files;
     }
 
     public function created_by()

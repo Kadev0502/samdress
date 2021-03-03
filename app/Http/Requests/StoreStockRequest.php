@@ -19,7 +19,8 @@ class StoreStockRequest extends FormRequest
         return [
             'preorder_code' => [
                 'string',
-                'nullable',
+                'required',
+                'unique:stocks',
             ],
             'quantity'      => [
                 'nullable',

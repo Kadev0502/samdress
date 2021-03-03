@@ -19,7 +19,8 @@ class StoreSizeRequest extends FormRequest
         return [
             'name' => [
                 'string',
-                'nullable',
+                'required',
+                'unique:sizes',
             ],
         ];
     }

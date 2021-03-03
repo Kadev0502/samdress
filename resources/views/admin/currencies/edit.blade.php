@@ -13,16 +13,16 @@
                         @method('PUT')
                         @csrf
                         <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                            <label for="name">{{ trans('cruds.currency.fields.name') }}</label>
-                            <input class="form-control" type="text" name="name" id="name" value="{{ old('name', $currency->name) }}">
+                            <label class="required" for="name">{{ trans('cruds.currency.fields.name') }}</label>
+                            <input class="form-control" type="text" name="name" id="name" value="{{ old('name', $currency->name) }}" required>
                             @if($errors->has('name'))
                                 <span class="help-block" role="alert">{{ $errors->first('name') }}</span>
                             @endif
                             <span class="help-block">{{ trans('cruds.currency.fields.name_helper') }}</span>
                         </div>
                         <div class="form-group {{ $errors->has('code') ? 'has-error' : '' }}">
-                            <label for="code">{{ trans('cruds.currency.fields.code') }}</label>
-                            <input class="form-control" type="text" name="code" id="code" value="{{ old('code', $currency->code) }}">
+                            <label class="required" for="code">{{ trans('cruds.currency.fields.code') }}</label>
+                            <input class="form-control" type="text" name="code" id="code" value="{{ old('code', $currency->code) }}" required>
                             @if($errors->has('code'))
                                 <span class="help-block" role="alert">{{ $errors->first('code') }}</span>
                             @endif

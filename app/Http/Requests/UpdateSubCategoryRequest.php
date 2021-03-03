@@ -19,7 +19,7 @@ class UpdateSubCategoryRequest extends FormRequest
         return [
             'name' => [
                 'string',
-                'nullable',
+                'required',
             ],
         ];
     }

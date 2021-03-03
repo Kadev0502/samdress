@@ -12,8 +12,8 @@
                     <form method="POST" action="{{ route("admin.sizes.store") }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                            <label for="name">{{ trans('cruds.size.fields.name') }}</label>
-                            <input class="form-control" type="text" name="name" id="name" value="{{ old('name', '') }}">
+                            <label class="required" for="name">{{ trans('cruds.size.fields.name') }}</label>
+                            <input class="form-control" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
                             @if($errors->has('name'))
                                 <span class="help-block" role="alert">{{ $errors->first('name') }}</span>
                             @endif

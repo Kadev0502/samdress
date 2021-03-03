@@ -19,7 +19,7 @@ class StoreSubCategoryRequest extends FormRequest
         return [
             'name' => [
                 'string',
-                'nullable',
+                'required',
             ],
         ];
     }

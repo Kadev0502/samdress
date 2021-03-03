@@ -19,7 +19,7 @@ class StoreSupplierRequest extends FormRequest
         return [
             'name' => [
                 'string',
-                'nullable',
+                'required',
             ],
         ];
     }

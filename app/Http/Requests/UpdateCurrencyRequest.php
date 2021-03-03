@@ -19,11 +19,12 @@ class UpdateCurrencyRequest extends FormRequest
         return [
             'name'        => [
                 'string',
-                'nullable',
+                'required',
             ],
             'code'        => [
                 'string',
-                'nullable',
+                'required',
+                'unique:currencies,code,' . request()->route('currency')->id,
             ],
             'suppliers.*' => [
                 'integer',

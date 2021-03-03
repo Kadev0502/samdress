@@ -19,7 +19,8 @@ class UpdateSizeRequest extends FormRequest
         return [
             'name' => [
                 'string',
-                'nullable',
+                'required',
+                'unique:sizes,name,' . request()->route('size')->id,
             ],
         ];
     }

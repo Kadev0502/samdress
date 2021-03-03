@@ -19,7 +19,8 @@ class UpdateColorRequest extends FormRequest
         return [
             'name' => [
                 'string',
-                'nullable',
+                'required',
+                'unique:colors,name,' . request()->route('color')->id,
             ],
         ];
     }

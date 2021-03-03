@@ -19,7 +19,8 @@ class StoreCategoryRequest extends FormRequest
         return [
             'name'             => [
                 'string',
-                'nullable',
+                'required',
+                'unique:categories',
             ],
             'sub_categories.*' => [
                 'integer',

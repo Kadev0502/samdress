@@ -12,7 +12,7 @@ class CreateStocksTable extends Migration
             $table->bigIncrements('id');
             $table->integer('quantity')->nullable();
             $table->decimal('total_price', 15, 2)->nullable();
-            $table->string('preorder_code')->nullable();
+            $table->string('preorder_code')->unique();
             $table->timestamps();
             $table->softDeletes();
         });

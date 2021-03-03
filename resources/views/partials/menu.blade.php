@@ -169,6 +169,120 @@
                     </ul>
                 </li>
             @endcan
+            @can('pre_order_access')
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa-fw fas fa-desktop">
+
+                        </i>
+                        <span>{{ trans('cruds.preOrder.title') }}</span>
+                        <span class="pull-right-container"><i class="fa fa-fw fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        @can('supplier_access')
+                            <li class="{{ request()->is("admin/suppliers") || request()->is("admin/suppliers/*") ? "active" : "" }}">
+                                <a href="{{ route("admin.suppliers.index") }}">
+                                    <i class="fa-fw fas fa-shuttle-van">
+
+                                    </i>
+                                    <span>{{ trans('cruds.supplier.title') }}</span>
+
+                                </a>
+                            </li>
+                        @endcan
+                        @can('currency_access')
+                            <li class="{{ request()->is("admin/currencies") || request()->is("admin/currencies/*") ? "active" : "" }}">
+                                <a href="{{ route("admin.currencies.index") }}">
+                                    <i class="fa-fw fas fa-money-bill-alt">
+
+                                    </i>
+                                    <span>{{ trans('cruds.currency.title') }}</span>
+
+                                </a>
+                            </li>
+                        @endcan
+                        @can('stock_access')
+                            <li class="{{ request()->is("admin/stocks") || request()->is("admin/stocks/*") ? "active" : "" }}">
+                                <a href="{{ route("admin.stocks.index") }}">
+                                    <i class="fa-fw fas fa-cubes">
+
+                                    </i>
+                                    <span>{{ trans('cruds.stock.title') }}</span>
+
+                                </a>
+                            </li>
+                        @endcan
+                    </ul>
+                </li>
+            @endcan
+            @can('product_access')
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa-fw fas fa-cart-arrow-down">
+
+                        </i>
+                        <span>{{ trans('cruds.product.title') }}</span>
+                        <span class="pull-right-container"><i class="fa fa-fw fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        @can('size_access')
+                            <li class="{{ request()->is("admin/sizes") || request()->is("admin/sizes/*") ? "active" : "" }}">
+                                <a href="{{ route("admin.sizes.index") }}">
+                                    <i class="fa-fw fas fa-drafting-compass">
+
+                                    </i>
+                                    <span>{{ trans('cruds.size.title') }}</span>
+
+                                </a>
+                            </li>
+                        @endcan
+                        @can('category_access')
+                            <li class="{{ request()->is("admin/categories") || request()->is("admin/categories/*") ? "active" : "" }}">
+                                <a href="{{ route("admin.categories.index") }}">
+                                    <i class="fa-fw fas fa-align-justify">
+
+                                    </i>
+                                    <span>{{ trans('cruds.category.title') }}</span>
+
+                                </a>
+                            </li>
+                        @endcan
+                        @can('sub_category_access')
+                            <li class="{{ request()->is("admin/sub-categories") || request()->is("admin/sub-categories/*") ? "active" : "" }}">
+                                <a href="{{ route("admin.sub-categories.index") }}">
+                                    <i class="fa-fw fas fa-align-left">
+
+                                    </i>
+                                    <span>{{ trans('cruds.subCategory.title') }}</span>
+
+                                </a>
+                            </li>
+                        @endcan
+                        @can('color_access')
+                            <li class="{{ request()->is("admin/colors") || request()->is("admin/colors/*") ? "active" : "" }}">
+                                <a href="{{ route("admin.colors.index") }}">
+                                    <i class="fa-fw fas fa-paint-roller">
+
+                                    </i>
+                                    <span>{{ trans('cruds.color.title') }}</span>
+
+                                </a>
+                            </li>
+                        @endcan
+                        @can('article_access')
+                            <li class="{{ request()->is("admin/articles") || request()->is("admin/articles/*") ? "active" : "" }}">
+                                <a href="{{ route("admin.articles.index") }}">
+                                    <i class="fa-fw fas fa-shopping-bag">
+
+                                    </i>
+                                    <span>{{ trans('cruds.article.title') }}</span>
+
+                                </a>
+                            </li>
+                        @endcan
+                    </ul>
+                </li>
+            @endcan
             @php($unread = \App\Models\QaTopic::unreadCount())
                 <li class="{{ request()->is("admin/messenger") || request()->is("admin/messenger/*") ? "active" : "" }}">
                     <a href="{{ route("admin.messenger.index") }}">

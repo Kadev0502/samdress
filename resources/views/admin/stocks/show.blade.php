@@ -75,14 +75,6 @@
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.stock.fields.created_by') }}
-                                    </th>
-                                    <td>
-                                        {{ $stock->created_by->name ?? '' }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
                                         {{ trans('cruds.stock.fields.created_at') }}
                                     </th>
                                     <td>

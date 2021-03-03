@@ -40,9 +40,6 @@
                                         {{ trans('cruds.article.fields.unit_price') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.article.fields.created_by') }}
-                                    </th>
-                                    <th>
                                         {{ trans('cruds.article.fields.color') }}
                                     </th>
                                     <th>
@@ -83,9 +80,6 @@
                                         </td>
                                         <td>
                                             {{ $article->unit_price ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $article->created_by->name ?? '' }}
                                         </td>
                                         <td>
                                             {{ $article->color->name ?? '' }}

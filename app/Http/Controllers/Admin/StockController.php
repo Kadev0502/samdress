@@ -20,7 +20,7 @@ class StockController extends Controller
     {
         abort_if(Gate::denies('stock_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $stocks = Stock::with(['supplier', 'size', 'created_by', 'article'])->get();
+        $stocks = Stock::with(['supplier', 'size', 'article', 'created_by'])->get();
 
         return view('admin.stocks.index', compact('stocks'));
     }
@@ -55,7 +55,7 @@ class StockController extends Controller
 
         $articles = Article::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $stock->load('supplier', 'size', 'created_by', 'article');
+        $stock->load('supplier', 'size', 'article', 'created_by');
 
         return view('admin.stocks.edit', compact('suppliers', 'sizes', 'articles', 'stock'));
     }
@@ -71,7 +71,7 @@ class StockController extends Controller
     {
         abort_if(Gate::denies('stock_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $stock->load('supplier', 'size', 'created_by', 'article');
+        $stock->load('supplier', 'size', 'article', 'created_by');
 
         return view('admin.stocks.show', compact('stock'));
     }

@@ -247,10 +247,6 @@ return [
             'profit'            => 'Profit',
         ],
     ],
-    'preOrder'          => [
-        'title'          => 'Pre Order',
-        'title_singular' => 'Pre Order',
-    ],
     'supplier'          => [
         'title'          => 'Supplier',
         'title_singular' => 'Supplier',
@@ -270,8 +266,8 @@ return [
         ],
     ],
     'product'           => [
-        'title'          => 'Product',
-        'title_singular' => 'Product',
+        'title'          => 'Product Management',
+        'title_singular' => 'Product Management',
     ],
     'size'              => [
         'title'          => 'Size',

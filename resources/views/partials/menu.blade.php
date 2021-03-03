@@ -223,30 +223,6 @@
                                 </a>
                             </li>
                         @endcan
-                    </ul>
-                </li>
-            @endcan
-            @can('article_access')
-                <li class="{{ request()->is("admin/articles") || request()->is("admin/articles/*") ? "active" : "" }}">
-                    <a href="{{ route("admin.articles.index") }}">
-                        <i class="fa-fw fas fa-shopping-bag">
-
-                        </i>
-                        <span>{{ trans('cruds.article.title') }}</span>
-
-                    </a>
-                </li>
-            @endcan
-            @can('pre_order_access')
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa-fw fas fa-desktop">
-
-                        </i>
-                        <span>{{ trans('cruds.preOrder.title') }}</span>
-                        <span class="pull-right-container"><i class="fa fa-fw fa-angle-left pull-right"></i></span>
-                    </a>
-                    <ul class="treeview-menu">
                         @can('supplier_access')
                             <li class="{{ request()->is("admin/suppliers") || request()->is("admin/suppliers/*") ? "active" : "" }}">
                                 <a href="{{ route("admin.suppliers.index") }}">
@@ -269,18 +245,29 @@
                                 </a>
                             </li>
                         @endcan
-                        @can('stock_access')
-                            <li class="{{ request()->is("admin/stocks") || request()->is("admin/stocks/*") ? "active" : "" }}">
-                                <a href="{{ route("admin.stocks.index") }}">
-                                    <i class="fa-fw fas fa-cubes">
-
-                                    </i>
-                                    <span>{{ trans('cruds.stock.title') }}</span>
-
-                                </a>
-                            </li>
-                        @endcan
                     </ul>
+                </li>
+            @endcan
+            @can('article_access')
+                <li class="{{ request()->is("admin/articles") || request()->is("admin/articles/*") ? "active" : "" }}">
+                    <a href="{{ route("admin.articles.index") }}">
+                        <i class="fa-fw fas fa-shopping-bag">
+
+                        </i>
+                        <span>{{ trans('cruds.article.title') }}</span>
+
+                    </a>
+                </li>
+            @endcan
+            @can('stock_access')
+                <li class="{{ request()->is("admin/stocks") || request()->is("admin/stocks/*") ? "active" : "" }}">
+                    <a href="{{ route("admin.stocks.index") }}">
+                        <i class="fa-fw fas fa-cubes">
+
+                        </i>
+                        <span>{{ trans('cruds.stock.title') }}</span>
+
+                    </a>
                 </li>
             @endcan
             @php($unread = \App\Models\QaTopic::unreadCount())

@@ -31,9 +31,6 @@
                                         {{ trans('cruds.subCategory.fields.name') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.subCategory.fields.category') }}
-                                    </th>
-                                    <th>
                                         &nbsp;
                                     </th>
                                 </tr>
@@ -49,9 +46,6 @@
                                         </td>
                                         <td>
                                             {{ $subCategory->name ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $subCategory->category->name ?? '' }}
                                         </td>
                                         <td>
                                             @can('sub_category_show')

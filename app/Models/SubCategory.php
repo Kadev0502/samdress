@@ -23,7 +23,6 @@ class SubCategory extends Model
     protected $fillable = [
         'name',
         'created_at',
-        'category_id',
         'updated_at',
         'deleted_at',
         'created_by_id',
@@ -34,9 +33,9 @@ class SubCategory extends Model
         return $date->format('Y-m-d H:i:s');
     }
 
-    public function category()
+    public function subCategoryCategories()
     {
-        return $this->belongsTo(Category::class, 'category_id');
+        return $this->belongsToMany(Category::class);
     }
 
     public function created_by()

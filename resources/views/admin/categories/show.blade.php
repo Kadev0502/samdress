@@ -33,6 +33,16 @@
                                         {{ $category->name }}
                                     </td>
                                 </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.category.fields.sub_category') }}
+                                    </th>
+                                    <td>
+                                        @foreach($category->sub_categories as $key => $sub_category)
+                                            <span class="label label-info">{{ $sub_category->name }}</span>
+                                        @endforeach
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                         <div class="form-group">
@@ -44,23 +54,7 @@
                 </div>
             </div>
 
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    {{ trans('global.relatedData') }}
-                </div>
-                <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
-                    <li role="presentation">
-                        <a href="#category_sub_categories" aria-controls="category_sub_categories" role="tab" data-toggle="tab">
-                            {{ trans('cruds.subCategory.title') }}
-                        </a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane" role="tabpanel" id="category_sub_categories">
-                        @includeIf('admin.categories.relationships.categorySubCategories', ['subCategories' => $category->categorySubCategories])
-                    </div>
-                </div>
-            </div>
+
 
         </div>
     </div>

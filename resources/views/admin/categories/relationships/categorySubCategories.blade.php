@@ -51,7 +51,9 @@
                                             {{ $subCategory->name ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $subCategory->category->name ?? '' }}
+                                            @foreach($subCategory->categories as $key => $item)
+                                                <span class="label label-info label-many">{{ $item->name }}</span>
+                                            @endforeach
                                         </td>
                                         <td>
                                             @can('sub_category_show')

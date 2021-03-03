@@ -17,12 +17,13 @@ class CategoryApiController extends Controller
     {
         abort_if(Gate::denies('category_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new CategoryResource(Category::with(['created_by'])->get());
+        return new CategoryResource(Category::with(['sub_categories', 'created_by'])->get());
     }
 
     public function store(StoreCategoryRequest $request)
     {
         $category = Category::create($request->all());
+        $category->sub_categories()->sync($request->input('sub_categories', []));
 
         return (new CategoryResource($category))
             ->response()
@@ -33,12 +34,13 @@ class CategoryApiController extends Controller
     {
         abort_if(Gate::denies('category_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new CategoryResource($category->load(['created_by']));
+        return new CategoryResource($category->load(['sub_categories', 'created_by']));
     }
 
     public function update(UpdateCategoryRequest $request, Category $category)
     {
         $category->update($request->all());
+        $category->sub_categories()->sync($request->input('sub_categories', []));
 
         return (new CategoryResource($category))
             ->response()

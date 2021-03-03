@@ -33,14 +33,6 @@
                                         {{ $subCategory->name }}
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th>
-                                        {{ trans('cruds.subCategory.fields.category') }}
-                                    </th>
-                                    <td>
-                                        {{ $subCategory->category->name ?? '' }}
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                         <div class="form-group">
@@ -52,7 +44,23 @@
                 </div>
             </div>
 
-
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {{ trans('global.relatedData') }}
+                </div>
+                <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
+                    <li role="presentation">
+                        <a href="#sub_category_categories" aria-controls="sub_category_categories" role="tab" data-toggle="tab">
+                            {{ trans('cruds.category.title') }}
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane" role="tabpanel" id="sub_category_categories">
+                        @includeIf('admin.subCategories.relationships.subCategoryCategories', ['categories' => $subCategory->subCategoryCategories])
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>

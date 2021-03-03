@@ -11,8 +11,6 @@ class AddRelationshipFieldsToSubCategoriesTable extends Migration
         Schema::table('sub_categories', function (Blueprint $table) {
             $table->unsignedBigInteger('created_by_id')->nullable();
             $table->foreign('created_by_id', 'created_by_fk_3325561')->references('id')->on('users');
-            $table->unsignedBigInteger('category_id')->nullable();
-            $table->foreign('category_id', 'category_fk_3327398')->references('id')->on('categories');
         });
     }
 }

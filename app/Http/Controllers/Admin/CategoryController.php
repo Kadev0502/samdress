@@ -7,6 +7,7 @@ use App\Http\Requests\MassDestroyCategoryRequest;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
+use App\Models\SubCategory;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +18,7 @@ class CategoryController extends Controller
     {
         abort_if(Gate::denies('category_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $categories = Category::with(['created_by'])->get();
+        $categories = Category::with(['sub_categories', 'created_by'])->get();
 
         return view('admin.categories.index', compact('categories'));
     }
@@ -26,12 +27,15 @@ class CategoryController extends Controller
     {
         abort_if(Gate::denies('category_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.categories.create');
+        $sub_categories = SubCategory::all()->pluck('name', 'id');
+
+        return view('admin.categories.create', compact('sub_categories'));
     }
 
     public function store(StoreCategoryRequest $request)
     {
         $category = Category::create($request->all());
+        $category->sub_categories()->sync($request->input('sub_categories', []));
 
         return redirect()->route('admin.categories.index');
     }
@@ -40,14 +44,17 @@ class CategoryController extends Controller
     {
         abort_if(Gate::denies('category_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $category->load('created_by');
+        $sub_categories = SubCategory::all()->pluck('name', 'id');
 
-        return view('admin.categories.edit', compact('category'));
+        $category->load('sub_categories', 'created_by');
+
+        return view('admin.categories.edit', compact('sub_categories', 'category'));
     }
 
     public function update(UpdateCategoryRequest $request, Category $category)
     {
         $category->update($request->all());
+        $category->sub_categories()->sync($request->input('sub_categories', []));
 
         return redirect()->route('admin.categories.index');
     }
@@ -56,7 +63,7 @@ class CategoryController extends Controller
     {
         abort_if(Gate::denies('category_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $category->load('created_by', 'categorySubCategories');
+        $category->load('sub_categories', 'created_by');
 
         return view('admin.categories.show', compact('category'));
     }

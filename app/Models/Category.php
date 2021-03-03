@@ -33,9 +33,9 @@ class Category extends Model
         return $date->format('Y-m-d H:i:s');
     }
 
-    public function categorySubCategories()
+    public function sub_categories()
     {
-        return $this->hasMany(SubCategory::class, 'category_id', 'id');
+        return $this->belongsToMany(SubCategory::class);
     }
 
     public function created_by()

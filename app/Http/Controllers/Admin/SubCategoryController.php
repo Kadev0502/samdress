@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroySubCategoryRequest;
 use App\Http\Requests\StoreSubCategoryRequest;
 use App\Http\Requests\UpdateSubCategoryRequest;
-use App\Models\Category;
 use App\Models\SubCategory;
 use Gate;
 use Illuminate\Http\Request;
@@ -18,7 +17,7 @@ class SubCategoryController extends Controller
     {
         abort_if(Gate::denies('sub_category_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $subCategories = SubCategory::with(['category', 'created_by'])->get();
+        $subCategories = SubCategory::with(['created_by'])->get();
 
         return view('admin.subCategories.index', compact('subCategories'));
     }
@@ -27,9 +26,7 @@ class SubCategoryController extends Controller
     {
         abort_if(Gate::denies('sub_category_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $categories = Category::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        return view('admin.subCategories.create', compact('categories'));
+        return view('admin.subCategories.create');
     }
 
     public function store(StoreSubCategoryRequest $request)
@@ -43,11 +40,9 @@ class SubCategoryController extends Controller
     {
         abort_if(Gate::denies('sub_category_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $categories = Category::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $subCategory->load('created_by');
 
-        $subCategory->load('category', 'created_by');
-
-        return view('admin.subCategories.edit', compact('categories', 'subCategory'));
+        return view('admin.subCategories.edit', compact('subCategory'));
     }
 
     public function update(UpdateSubCategoryRequest $request, SubCategory $subCategory)
@@ -61,7 +56,7 @@ class SubCategoryController extends Controller
     {
         abort_if(Gate::denies('sub_category_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $subCategory->load('category', 'created_by');
+        $subCategory->load('created_by', 'subCategoryCategories');
 
         return view('admin.subCategories.show', compact('subCategory'));
     }

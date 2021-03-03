@@ -17,7 +17,7 @@ class SubCategoryApiController extends Controller
     {
         abort_if(Gate::denies('sub_category_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new SubCategoryResource(SubCategory::with(['category', 'created_by'])->get());
+        return new SubCategoryResource(SubCategory::with(['created_by'])->get());
     }
 
     public function store(StoreSubCategoryRequest $request)
@@ -33,7 +33,7 @@ class SubCategoryApiController extends Controller
     {
         abort_if(Gate::denies('sub_category_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new SubCategoryResource($subCategory->load(['category', 'created_by']));
+        return new SubCategoryResource($subCategory->load(['created_by']));
     }
 
     public function update(UpdateSubCategoryRequest $request, SubCategory $subCategory)

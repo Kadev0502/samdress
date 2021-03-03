@@ -17,9 +17,15 @@ class UpdateCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => [
+            'name'             => [
                 'string',
                 'nullable',
+            ],
+            'sub_categories.*' => [
+                'integer',
+            ],
+            'sub_categories'   => [
+                'array',
             ],
         ];
     }

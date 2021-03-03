@@ -75,11 +75,11 @@
                                             {{ $article->link ?? '' }}
                                         </td>
                                         <td>
-                                            @if($article->photo)
-                                                <a href="{{ $article->photo->getUrl() }}" target="_blank" style="display: inline-block">
-                                                    <img src="{{ $article->photo->getUrl('thumb') }}">
+                                            @foreach($article->photo as $key => $media)
+                                                <a href="{{ $media->getUrl() }}" target="_blank" style="display: inline-block">
+                                                    <img src="{{ $media->getUrl('thumb') }}">
                                                 </a>
-                                            @endif
+                                            @endforeach
                                         </td>
                                         <td>
                                             {{ $article->unit_price ?? '' }}

@@ -46,11 +46,11 @@
                                         {{ trans('cruds.article.fields.photo') }}
                                     </th>
                                     <td>
-                                        @if($article->photo)
-                                            <a href="{{ $article->photo->getUrl() }}" target="_blank" style="display: inline-block">
-                                                <img src="{{ $article->photo->getUrl('thumb') }}">
+                                        @foreach($article->photo as $key => $media)
+                                            <a href="{{ $media->getUrl() }}" target="_blank" style="display: inline-block">
+                                                <img src="{{ $media->getUrl('thumb') }}">
                                             </a>
-                                        @endif
+                                        @endforeach
                                     </td>
                                 </tr>
                                 <tr>

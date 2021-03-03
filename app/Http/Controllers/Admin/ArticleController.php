@@ -46,8 +46,8 @@ class ArticleController extends Controller
     {
         $article = Article::create($request->all());
 
-        if ($request->input('photo', false)) {
-            $article->addMedia(storage_path('tmp/uploads/' . basename($request->input('photo'))))->toMediaCollection('photo');
+        foreach ($request->input('photo', []) as $file) {
+            $article->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('photo');
         }
 
         if ($media = $request->input('ck-media', false)) {
@@ -76,16 +76,20 @@ class ArticleController extends Controller
     {
         $article->update($request->all());
 
-        if ($request->input('photo', false)) {
-            if (!$article->photo || $request->input('photo') !== $article->photo->file_name) {
-                if ($article->photo) {
-                    $article->photo->delete();
+        if (count($article->photo) > 0) {
+            foreach ($article->photo as $media) {
+                if (!in_array($media->file_name, $request->input('photo', []))) {
+                    $media->delete();
                 }
-
-                $article->addMedia(storage_path('tmp/uploads/' . basename($request->input('photo'))))->toMediaCollection('photo');
             }
-        } elseif ($article->photo) {
-            $article->photo->delete();
+        }
+
+        $media = $article->photo->pluck('file_name')->toArray();
+
+        foreach ($request->input('photo', []) as $file) {
+            if (count($media) === 0 || !in_array($file, $media)) {
+                $article->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('photo');
+            }
         }
 
         return redirect()->route('admin.articles.index');

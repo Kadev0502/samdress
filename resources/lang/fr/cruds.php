@@ -68,8 +68,8 @@ return [
         ],
     ],
     'userAlert'         => [
-        'title'          => 'Messages d\'alerte aux utilisateurs',
-        'title_singular' => 'Messages d\'alerte aux utilisateur',
+        'title'          => 'Messages d\'alerte',
+        'title_singular' => 'Messages d\'alerte',
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',

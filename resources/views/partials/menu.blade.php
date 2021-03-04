@@ -147,7 +147,7 @@
                         @can('income_access')
                             <li class="{{ request()->is("admin/incomes") || request()->is("admin/incomes/*") ? "active" : "" }}">
                                 <a href="{{ route("admin.incomes.index") }}">
-                                    <i class="fa-fw fas fa-arrow-circle-right">
+                                    <i class="fa-fw fas fa-arrow-circle-left">
 
                                     </i>
                                     <span>{{ trans('cruds.income.title') }}</span>

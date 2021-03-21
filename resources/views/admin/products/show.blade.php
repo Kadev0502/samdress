@@ -38,7 +38,7 @@
                                         {{ trans('cruds.product.fields.link') }}
                                     </th>
                                     <td>
-                                        {{ $product->link }}
+                                        <a href="{{ $product->link ?? '' }}" target="_blank">go to the product page</a>
                                     </td>
                                 </tr>
                                 <tr>

@@ -57,7 +57,7 @@
                                             {{ $supplier->name ?? '' }}
                                         </td>
                                         <td>
-                                            <a href=" {{ $supplier->website ?? '' }}" target="_blank">go to supplier page</a>
+                                            {{ $supplier->website ?? '' }}
                                         </td>
                                         <td>
                                             {{ $supplier->currency->currency ?? '' }}
@@ -147,7 +147,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-
+  
 })
 
 </script>

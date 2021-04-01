@@ -38,7 +38,7 @@
                                         {{ trans('cruds.supplier.fields.website') }}
                                     </th>
                                     <td>
-                                        <a href=" {{ $supplier->website ?? '' }}" target="_blank">go to supplier page</a>
+                                        {{ $supplier->website }}
                                     </td>
                                 </tr>
                                 <tr>

@@ -66,7 +66,7 @@
                                             {{ $product->supplier->name ?? '' }}
                                         </td>
                                         <td>
-                                            <a href="{{ $product->link ?? '' }}" target="_blank">go to the product page</a>
+                                            {{ $product->link ?? '' }}
                                         </td>
                                         <td>
                                             {{ $product->name ?? '' }}
@@ -173,7 +173,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-
+  
 })
 
 </script>

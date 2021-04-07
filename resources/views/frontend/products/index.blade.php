@@ -61,7 +61,7 @@
                                             {{ $product->supplier->name ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $product->link ?? '' }}
+                                            <a href="{{ $product->link ?? '' }}" target="_blank">go to the product page</a>
                                         </td>
                                         <td>
                                             {{ $product->name ?? '' }}
@@ -86,15 +86,15 @@
                                                 </a>
                                             @endif
                                         </td>
-                                        <td>
+                                        <td class="btn-group btn-group-toggle">
                                             @can('product_show')
-                                                <a class="btn btn-xs btn-primary" href="{{ route('frontend.products.show', $product->id) }}">
+                                                <a class="btn btn-xs btn-primary mr-2 mb-2" href="{{ route('frontend.products.show', $product->id) }}">
                                                     {{ trans('global.view') }}
                                                 </a>
                                             @endcan
 
                                             @can('product_edit')
-                                                <a class="btn btn-xs btn-info" href="{{ route('frontend.products.edit', $product->id) }}">
+                                                <a class="btn btn-xs btn-info mr-2 mb-2" href="{{ route('frontend.products.edit', $product->id) }}">
                                                     {{ trans('global.edit') }}
                                                 </a>
                                             @endcan
@@ -103,7 +103,7 @@
                                                 <form action="{{ route('frontend.products.destroy', $product->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                    <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                                    <input type="submit" class="btn btn-xs btn-danger mr-2 mb-2" value="{{ trans('global.delete') }}">
                                                 </form>
                                             @endcan
 
@@ -166,7 +166,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 })
 
 </script>
